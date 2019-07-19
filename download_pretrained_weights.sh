@@ -5,7 +5,7 @@ URL_MODEL=https://collections.durham.ac.uk/downloads/r25425k9734
 
 echo "downloading the model weights..."
 
-wget --quiet --show-progress $URL_MODEL -O $MODEL
+wget --quiet --no-check-certificate --show-progress $URL_MODEL -O $MODEL
 
 echo "checking the MD5 checksum for downloaded model..."
 
