@@ -2,7 +2,7 @@
 
 Requires an NVIDIA GPU, Python 3, [CUDA CuDNN](https://developer.nvidia.com/cudnn), [PyTorch 1.0](http://pytorch.org), and [OpenCV](http://www.opencv.org).
 <br>
-Other libraries such as [visdom](https://github.com/facebookresearch/visdom) and [colorama](https://pypi.org/project/colorama/) are also optionally used in the code.
+Other libraries such as [visdom](https://github.com/facebookresearch/visdom) are also optionally used in the code. If you wish to use visdom to plot curves and display results, this needs to be set in the arguments via `--display`.
 
 ![General Pipeline](https://github.com/atapour/temporal-depth-segmentation.dev/blob/master/imgs/architecture_pipeline.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -72,7 +72,7 @@ Custom Dataset
 
 
 ```
-* The training code utilizes [visdom](https://github.com/facebookresearch/visdom) to display training results and plots, in order to do which simply run `python -m visdom.server` and click the URL http://localhost:8097.
+* The training code can utilizes [visdom](https://github.com/facebookresearch/visdom) to display training results and plots, in order to do which simply run `visdom` and then navigate to the URL http://localhost:8097. If you intend to use this, the argument `--display` needs to be added to the command line.
 
 * To train the model, run the following command:
 
@@ -127,10 +127,10 @@ This work is created as part of the project published in the following. The mode
 @InProceedings{abarghouei19depth,
   author = {Atapour-Abarghouei, A. and Breckon, T.P.},
   title = {Veritatem Dies Aperit - Temporally Consistent Depth Prediction Enabled by a Multi-Task Geometric and Semantic Scene Understanding Approach},
-  booktitle = {Proc. IEEE Conf. Computer Vision and Pattern Recognition},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+  pages={3373--3384},
   year = {2019},
-  publisher = {IEEE}, 
-  note =  {to appear}
+  publisher = {IEEE}
 }
 
 ```
