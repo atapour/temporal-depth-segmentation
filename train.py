@@ -1,14 +1,8 @@
 import time
-import colorama
 from train_arguments import Arguments
 from data import create_loader
 from model import create_model
 from utils.general import Display
-
-# setting up the colors:
-reset = colorama.Style.RESET_ALL
-green = colorama.Fore.GREEN
-red = colorama.Fore.RED
 
 args = Arguments().parse()
 data_loader = create_loader(args)
@@ -16,7 +10,7 @@ dataset = data_loader.load_data()
 dataset_size = len(data_loader)
 
 nl = '\n'
-print(f'{green}There are a total number of {red}{dataset_size}{green} sequences of {red}{args.num_frames}{green} frames in the training set.{reset}{nl}')
+print(f'There are a total number of {dataset_size} sequences of {args.num_frames} frames in the training set.{nl}')
 
 model = create_model(args)
 model.set_up(args)
@@ -39,14 +33,14 @@ for epoch in range(0, args.num_epochs):
         model.assign_inputs(data)
         model.recur()
 
-        if global_step % args.display_freq == 0:
+        if global_step % args.display_freq == 0 and args.display:
             display.display_current_results(model.get_images())
 
         if global_step % args.print_freq == 0:
             loss = model.get_loss()
             t_proc = (time.time() - processing_time_start) / args.batch_size
             display.print_current_loss(epoch, global_step, loss, t_proc, t_data)
-            if args.display_id > 0:
+            if args.display_id > 0 and args.display:
                 display.plot_current_loss(epoch, float(total_steps) / dataset_size, loss)
 
         global_step += 1
