@@ -1,13 +1,7 @@
 from collections import OrderedDict
-import colorama
 import torch
 from utils.segmentation import colorize_segmentaions
 from model.networks import Encoder, Decoder_part_one, Decoder_part_two
-#-----------------------------------------
- # setting up the pretty colors:
-reset = colorama.Style.RESET_ALL
-blue = colorama.Fore.BLUE
-red = colorama.Fore.RED
 
 #-----------------------------------------
 class TheModel():
@@ -27,7 +21,7 @@ class TheModel():
     def set_up(self, args):
         if args.test_checkpoint_path is not None:
 
-            print(f'loading the checkpoint from {red}{args.test_checkpoint_path}{reset}.')
+            print(f'loading the checkpoint from {args.test_checkpoint_path}.')
 
             state_dict = torch.load(args.test_checkpoint_path, map_location=str(self.device))
             if hasattr(state_dict, '_metadata'):
@@ -101,7 +95,7 @@ class TheModel():
 
         num_params = list(self.encoder_rgb.parameters()) + list(self.encoder_depth.parameters()) + list(self.decoder_1.parameters()) + list(self.decoder_2_segmentation.parameters()) + list(self.decoder_2_depth.parameters())
         nl = '\n'
-        print(f'{blue}There are {red}{(sum([p.numel() for p in num_params]))}{blue} parameters in the whole model{reset}!{nl}')
+        print(f'There are {(sum([p.numel() for p in num_params]))} parameters in the whole model!{nl}')
 
     # this function returns the output image and the RGB image during testing
     def get_test_outputs(self):

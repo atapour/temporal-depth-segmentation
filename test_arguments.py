@@ -1,5 +1,4 @@
 import argparse
-import colorama
 
 class Arguments():
     def __init__(self):
@@ -39,17 +38,8 @@ class Arguments():
 
     def print_args(self, args):
 
-        # setting up the colors:
-        reset = colorama.Style.RESET_ALL
-        magenta = colorama.Fore.MAGENTA
-        blue = colorama.Fore.BLUE
-
         txt = '\n'
 
-        txt += '{}The default arguments are displayed in blue!{}\n'.format(blue, reset)
-        txt += '{}The specified arguments are displayed in magenta!{}\n'.format(magenta, reset)
-
-        txt += '\n'
         txt += '-------------------- Arguments --------------------\n'
 
         for k, v in sorted(vars(args).items()):
@@ -57,12 +47,10 @@ class Arguments():
             comment = ''
             default = self.parser.get_default(k)
 
-            color = blue if v == default else magenta
-
             if v != default:
                 comment = '\t[default: %s]' % str(default)
 
-            txt += '{}{:>25}: {:<30}{}{}\n'.format(color, str(k), str(v), comment, reset)
+            txt += '{:>25}: {:<30}{}\n'.format(str(k), str(v), comment)
 
         txt += '----------------------- End -----------------------'
         txt += '\n'

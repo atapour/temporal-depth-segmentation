@@ -1,17 +1,11 @@
 import os
 import glob
 from collections import OrderedDict
-import colorama
 import torch
 from utils.segmentation import CrossEntropyLoss2d, colorize_segmentaions
 from utils.depth import scale_pyramid, get_smooth_weight
 from utils.optical_flow import estimate_flow, EPE
 from model.networks import Encoder, Decoder_part_one, Decoder_part_two, Discriminator, FlowNetwork, AdvLoss
-#-----------------------------------------
- # setting up the pretty colors:
-reset = colorama.Style.RESET_ALL
-blue = colorama.Fore.BLUE
-red = colorama.Fore.RED
 
 #-----------------------------------------
 class TheModel():
@@ -86,7 +80,7 @@ class TheModel():
             elif args.which_checkpoint != 'latest' and args.which_checkpoint.isdigit():
                 step = args.which_checkpoint
             else:
-                raise Exception('The specified checkpoint to load in invalid.')
+                raise Exception('The specified checkpoint is invalid.')
             self.load_networks(step)
 
         self.print_networks()
@@ -225,7 +219,7 @@ class TheModel():
         save_filename = 'checkpoint_%s_steps.pth' % (step)
         save_path = os.path.join(self.checkpoint_save_dir, save_filename)
 
-        print(f'saving the checkpoint to {red}{save_path}.{reset}')
+        print(f'saving the checkpoint to {save_path}.')
 
         torch.save({'state_dict_encoder_rgb': self.encoder_rgb.state_dict(),
                     'state_dict_encoder_depth': self.encoder_depth.state_dict(),
@@ -243,7 +237,7 @@ class TheModel():
         load_filename = 'checkpoint_%s_steps.pth' % (step)
         load_path = os.path.join(self.checkpoint_save_dir, load_filename)
 
-        print(f'loading the checkpoint from {red}{load_path}{reset}.')
+        print(f'loading the checkpoint from {load_path}.')
 
         state_dict = torch.load(load_path, map_location=str(self.device))
         if hasattr(state_dict, '_metadata'):
@@ -264,7 +258,7 @@ class TheModel():
 
         num_params = list(self.encoder_rgb.parameters()) + list(self.encoder_depth.parameters()) + list(self.decoder_1.parameters()) + list(self.decoder_2_segmentation.parameters()) + list(self.decoder_2_depth.parameters()) + list(self.discriminator.parameters())
         nl = '\n'
-        print(f'{blue}There are {red}{(sum([p.numel() for p in num_params]))}{blue} parameters in the whole model!{reset}{nl}')
+        print(f'There are {(sum([p.numel() for p in num_params]))} parameters in the whole model!{nl}')
 
     def get_loss(self):
         errors_ret = OrderedDict()
