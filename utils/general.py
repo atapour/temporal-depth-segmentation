@@ -4,15 +4,7 @@ import os
 import numpy as np
 import torch
 from PIL import Image
-import colorama
 import cv2
-
-# setting up the colors:
-reset = colorama.Style.RESET_ALL
-green = colorama.Fore.GREEN
-magenta = colorama.Fore.MAGENTA
-red = colorama.Fore.RED
-cyan = colorama.Fore.CYAN
 
 # this class is used to print and display results using visdom 
 class Display():
@@ -21,7 +13,7 @@ class Display():
         self.win_size = args.display_winsize
         self.name = args.name
         self.args = args
-        if self.display_id > 0:
+        if self.display_id > 0 and args.display:
             import visdom
             self.ncols = args.display_ncols
             self.vis = visdom.Visdom(server=args.display_server, port=args.display_port, env=args.display_env, raise_exceptions=True)
@@ -105,17 +97,17 @@ class Display():
     # losses: same format as |losses| of plot_current_losses
     def print_current_loss(self, epoch, i, loss, t, t_data):
 
-        message = '%s(epoch: %d, batches: %d, time: %.3f, data: %.3f) ' % (magenta, epoch, i, t, t_data)
+        message = '(epoch: %d, batches: %d, time: %.3f, data: %.3f) ' % (epoch, i, t, t_data)
 
         for a, b in loss.items():
-            message += '%s%s: %s%.3f ' % (cyan, a, red, b)
+            message += '%s: %.3f ' % (a, b)
 
         print(message)
         with open(self.log_name, "a") as log_file:
             log_file.write('%s\n' % message)
 
 
-# this function return a numpy array when given an image. For the network output images (one channel images) colorization to black and white is performed here.
+# this function return a numpy array when given an image. For the network output images (one channel images) colourisation to black and white is performed here.
 def return_numpy_array(img, imtype=np.uint8):
 
     if isinstance(img, torch.Tensor):
