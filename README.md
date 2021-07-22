@@ -4,7 +4,7 @@ Requires an NVIDIA GPU, Python 3, [CUDA CuDNN](https://developer.nvidia.com/cudn
 <br>
 Other libraries such as [visdom](https://github.com/facebookresearch/visdom) are also optionally used in the code. If you wish to use visdom to plot curves and display results, this needs to be set in the arguments via `--display`.
 
-![General Pipeline](https://github.com/atapour/temporal-depth-segmentation.dev/blob/master/imgs/architecture_pipeline.png)
+![General Pipeline](https://raw.githubusercontent.com/atapour/temporal-depth-segmentation/master/imgs/architecture_pipeline.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -20,7 +20,7 @@ _"Robust geometric and semantic scene understanding is ever more important in ma
 ---
 
 
-![](https://github.com/atapour/temporal-depth-segmentation.dev/blob/master/imgs/results.png)
+![](https://raw.githubusercontent.com/atapour/temporal-depth-segmentation/master/imgs/results.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -106,7 +106,7 @@ The output results are written in a directory taken as an argument to the test h
 ---
 
 ## Example:
-[![Video Example](https://github.com/atapour/temporal-depth-segmentation.dev/blob/master/imgs/thumbnail.jpg)](https://vimeo.com/325161805 "Video - Click to Play")
+[![Video Example](https://raw.githubusercontent.com/atapour/temporal-depth-segmentation/master/imgs/thumbnail.jpg)](https://vimeo.com/325161805 "Video - Click to Play")
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
